@@ -1,7 +1,7 @@
 import Category from "../Category/Category";
 import "./Home.scss";
 import PopularProduct from "../PopularProduct/PopularProduct";
-import Contentimg from "../Contentimg/Contentimg";
+import Contentimg from "../contentimg/Contentimg";
 import FeatureProduct from "../FeatureProduct/FeatureProduct";
 import JustArrived from "../JustArrived/JustArrived";
 import Blog from "../Blog/Blog";
