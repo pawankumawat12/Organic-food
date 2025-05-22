@@ -1,0 +1,140 @@
+.home {
+  background-image: url("../../assets/back-h.jpg");
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 20px;
+.hero-section {
+  text-align: left;
+  padding: 60px 12px;
+
+  .headline {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+
+    .organic-text {
+      color: #6dbb4e;
+      font-weight: 700;
+    }
+
+    .doorsteps-text {
+      color: #0e0e0e;
+      font-weight: 800;
+    }
+  }
+
+  .subtext {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    .btn {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.btn-green {
+        background-color: #6dbb4e;
+        color: white;
+
+        &:hover {
+          background-color: #5ca842;
+        }
+      }
+
+      &.btn-dark {
+        background-color: #0e0e0e;
+        color: white;
+
+        &:hover {
+          background-color: #222;
+        }
+      }
+    }
+  }
+
+  .stats {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      .stat-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #0e0e0e;
+        margin-bottom: 0.25rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #333;
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+  .features {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    text-align: left;
+
+    .feature-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      gap: 1.5rem;
+
+      .icon {
+        font-size: 2.5rem;
+      }
+
+      .content {
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+      }
+
+      &.fresh {
+        background-color: #6dbb4e;
+      }
+
+      &.organic {
+        background-color: #353f28;
+      }
+
+      &.delivery {
+        background-color: #f95e02;
+      }
+    }
+  }
+}

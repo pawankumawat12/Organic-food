@@ -1,0 +1,50 @@
+import './Register.scss';
+import registerimg from '../../assets/login.png';
+function Register({ closeRegister }) {
+    return (
+        <>
+         <div className="login-popup">
+      <div className="login-container" onClick={(e) => e.stopPropagation()}>
+        <div className="login-form">
+          <h1 className="title">Create an account</h1>
+          <p className="subtitle">Please enter your details to register</p>
+
+          <form>
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name" required />
+
+            <label>Email address</label>
+            <input type="email" placeholder="Enter your email" required />
+
+            <label>Password</label>
+            <input type="password" placeholder="Create a password" required />
+
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Confirm your password" required />
+
+            <button type="submit" className="sign-in-btn">
+              Sign up
+            </button>
+
+            <button type="button" className="google-btn">
+              Sign up with Google
+            </button>
+          </form>
+
+          <p className="signup-text">
+            Already have an account? <a href="#">Sign in</a>
+          </p>
+        </div>
+
+        <div className="login-illustration">
+          <button className="close-btn" onClick={closeRegister}>
+            <i className="fas fa-times"></i>
+          </button>
+          <img src={registerimg} alt="Register Illustration" />
+        </div>
+      </div>
+    </div>
+        </>
+    )
+}
+export default Register;
