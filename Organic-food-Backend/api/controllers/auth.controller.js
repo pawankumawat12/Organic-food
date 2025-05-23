@@ -1,13 +1,14 @@
 import { register } from '../services/auth.service.js';
 import logger from '../../utils/logger.js';
+import { successResponse, errorResponse } from '../../utils/response.js';
 
 export const registerUser = async (req, res, next) => {
   try {
     const result = await register(req.body);
     console.log('req.body', req.body);
-    res.status(201).json(result);
+    return successResponse(res, { message: 'User registered successfully', userId: user._id }, 201);
   } catch (error) {
     logger.error('Register error:', error);
-    res.status(error.status || 500).json({ message: error.message || 'Internal Server Error' });
+    return errorResponse(res, error.message, 500);
   }
 };
