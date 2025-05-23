@@ -1,4 +1,5 @@
 import { register } from '../services/auth.service.js';
+import { register } from '../services/auth.service.js';
 import logger from '../../utils/logger.js';
 import { successResponse, errorResponse } from '../../utils/response.js';
 
