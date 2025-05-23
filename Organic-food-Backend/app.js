@@ -6,6 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 // import authRoutes from './api/routes/auth.routes.js';
+import authRoutes from './api/routes/auth.routes.js';
+// import userRoutes from './api/routes/user.routes.js';
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+// app.use('/api/users', userRoutes);
 // app.use('/api', authRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
