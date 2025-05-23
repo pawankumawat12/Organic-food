@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/register": {
+    "/auth/Signup": {
       "post": {
         "summary": "Register a new user",
         "tags": [

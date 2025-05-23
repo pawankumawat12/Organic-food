@@ -1,18 +1,50 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import logger from '../../utils/logger.js';
+
+dotenv.config();
+
+const reconnectTimeout = 5000;
 
 export const connectToDatabase = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    logger.info('MongoDB:         Connected successfully');
-    logger.info(`MongoDB:         Database: ${mongoose.connection.name}`);
-    logger.info(`MongoDB:         Host:     ${mongoose.connection.host}`);
-    logger.info(`MongoDB:         Port:     ${mongoose.connection.port}`);
-    // logger.info(`MongoDB:         User:     ${mongoose.connection.user}`);
-    logger.info(`MongoDB:         AuthSource: ${mongoose.connection.db.databaseName}`);
-    // logger.info(`MongoDB:         AuthMechanism: ${mongoose.connection.db.authMechanism}`);
+    // Connect using MONGO_URI from .env
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    const db = mongoose.connection;
+
+    // Events
+    db.on('connecting', () => {
+      logger.info('MongoDB:         Connecting...');
+    });
+
+    db.on('error', (error) => {
+      logger.error(`MongoDB:         Connection error: ${error}`);
+      mongoose.disconnect();
+    });
+
+    db.once('open', () => {
+      logger.info('MongoDB:         Connection open');
+      logger.info(`MongoDB:         Database: ${mongoose.connection.db.databaseName}`);
+    });
+
+    db.on('disconnected', () => {
+      logger.warn(`MongoDB:         Disconnected! Reconnecting in ${reconnectTimeout / 1000}s...`);
+      setTimeout(connectToDatabase, reconnectTimeout);
+    });
+
+    db.on('reconnected', () => {
+      logger.info('MongoDB:         Reconnected!');
+    });
+
+    // Log success
+    logger.info(`MongoDB:         Connected successfully ${conn.connection.host}`);
+        await mongoose.connection.collection('test').insertOne({ test: true });
   } catch (err) {
-    logger.error(`MongoDB connection failed: ${err.message}`);
-    throw err;
+    logger.error(`MongoDB:         Initial connection failed: ${err.message}`);
+    process.exit(1);
   }
 };
