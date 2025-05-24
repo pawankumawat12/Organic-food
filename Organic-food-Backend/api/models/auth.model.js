@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-   emailaddress: {
+  emailaddress: {
     type: String,
     required: true,
     unique: true,
@@ -20,6 +20,15 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  provider: {
+    type: String,
+    enum: ['local', 'google', 'facebook'],
+    default: 'local'
+  },
+  isEmailVerified: {
+    type: Boolean,
+    default: false
   },
 }, { timestamps: true });
 

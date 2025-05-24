@@ -1,14 +1,4 @@
 import swaggerAutogen from 'swagger-autogen';
-
-// const doc = {
-//     info: {
-//         title: 'Client Project API',
-//         description: 'Auto-generated Swagger docs',
-//     },
-//     host: 'localhost:5000',
-//     schemes: ['http'],
-//     basePath: '/api',
-// };
 const doc = {
     info: {
         title: 'Client Project API',
