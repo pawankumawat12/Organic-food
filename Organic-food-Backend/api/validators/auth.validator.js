@@ -4,8 +4,7 @@ export const registerSchema = Joi.object({
     fullname: Joi.string().required(),
     emailaddress: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
-    // role:Joi.string().valid('user', 'admin').default('user')
-     confirmpassword: Joi.string().valid(Joi.ref('password')).required().messages({
+    confirmpassword: Joi.string().valid(Joi.ref('password')).required().messages({
     'any.only': 'Passwords do not match'
   })
 });
