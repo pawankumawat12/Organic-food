@@ -348,6 +348,82 @@
           }
         }
       }
+    },
+    "/api/auth/google": {
+      "get": {
+        "summary": "Google OAuth login",
+        "description": "Redirect user to Google for OAuth authentication.",
+        "responses": {
+          "302": {
+            "description": "Redirect to Google OAuth consent screen"
+          }
+        }
+      }
+    },
+    "/api/auth/google/callback": {
+      "get": {
+        "summary": "Google OAuth callback",
+        "description": "Google OAuth callback URL to handle OAuth response.",
+        "responses": {
+          "200": {
+            "description": "OAuth successful, returns JWT token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "JWT access token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized or OAuth failed"
+          }
+        }
+      }
+    },
+    "/api/auth/facebook": {
+      "get": {
+        "summary": "Facebook OAuth login",
+        "description": "Redirect user to Facebook for OAuth authentication.",
+        "responses": {
+          "302": {
+            "description": "Redirect to Facebook OAuth consent screen"
+          }
+        }
+      }
+    },
+    "/api/auth/facebook/callback": {
+      "get": {
+        "summary": "Facebook OAuth callback",
+        "description": "Facebook OAuth callback URL to handle OAuth response.",
+        "responses": {
+          "200": {
+            "description": "OAuth successful, returns JWT token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "JWT access token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized or OAuth failed"
+          }
+        }
+      }
     }
   }
 }
