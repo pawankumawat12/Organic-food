@@ -10,8 +10,22 @@
       "url": "http://localhost:5000/api"
     }
   ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "paths": {
-    "/auth/Signup": {
+    "/auth/signup": {
       "post": {
         "summary": "Register a new user",
         "tags": [
@@ -24,20 +38,24 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "name",
-                  "email",
+                  "fullname",
+                  "emailaddress",
                   "password"
                 ],
                 "properties": {
-                  "name": {
+                  "fullname": {
                     "type": "string",
                     "example": "John Doe"
                   },
-                  "email": {
+                  "emailaddress": {
                     "type": "string",
                     "example": "john@example.com"
                   },
                   "password": {
+                    "type": "string",
+                    "example": "StrongPass123"
+                  },
+                  "confirmpassword": {
                     "type": "string",
                     "example": "StrongPass123"
                   }
@@ -54,13 +72,28 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "User registered successfully"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "User registered successfully"
+                        },
+                        "userId": {
+                          "type": "string",
+                          "example": "647f2a8f1a3f7a3b2c123456"
+                        }
+                      }
                     },
-                    "userId": {
-                      "type": "string",
-                      "example": "647f2a8f1a3f7a3b2c123456"
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 201
                     }
                   }
                 }
@@ -74,9 +107,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Name, email, and password are required"
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "fullname, emailaddress, and password ,role are required"
+                      ]
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 400
                     }
                   }
                 }
@@ -90,9 +135,21 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Email already exists"
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "Email already exists"
+                      ]
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 409
                     }
                   }
                 }
@@ -100,15 +157,152 @@
             }
           },
           "500": {
-            "description": "Internal server error",
+            "description": "Internal Server Error",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Internal Server Error"
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "Internal Server Error"
+                      ]
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 500
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "summary": "Login User",
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "emailaddress",
+                  "password"
+                ],
+                "properties": {
+                  "emailaddress": {
+                    "type": "string",
+                    "example": "john@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "StrongPass123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Login successful"
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                        }
+                      }
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "Invalid email or password"
+                      ]
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 401
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "Internal Server Error"
+                      ]
+                    },
+                    "responseCode": {
+                      "type": "integer",
+                      "example": 500
                     }
                   }
                 }
