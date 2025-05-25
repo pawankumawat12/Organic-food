@@ -1,6 +1,6 @@
-import { register, loginuser, logoutUser } from '../services/auth.service.js';
-import logger from '../../utils/logger.js';
-import { successResponse, errorResponse } from '../../utils/response.js';
+import { register, loginuser, logoutUser } from '../../services/authServices/auth.service.js';
+import logger from '../../../utils/logger.js';
+import { successResponse, errorResponse } from '../../../utils/response.js';
 import { token } from 'morgan';
 import { getStatusCode } from 'routing-controllers-openapi';
 
