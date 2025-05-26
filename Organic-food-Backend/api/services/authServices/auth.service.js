@@ -1,9 +1,9 @@
-import User from '../models/auth.model.js';
+import User from '../../models/authmodels/auth.model.js';
 import bcryptjs from 'bcryptjs';
-import { sendEmail } from '../../utils/email.js';
+import { sendEmail } from '../../../utils/email.js';
 import jwt from 'jsonwebtoken';
-import { generateToken } from '../../middlewares/auth.middleware.js';
-import { getRedisClient } from '../../database/redis/redis.js';
+import { generateToken } from '../../../middlewares/auth.middleware.js';
+import { getRedisClient } from '../../../database/redis/redis.js';
 
 const HASHVALUE = process.env.HASHVALUE || '10';
 
