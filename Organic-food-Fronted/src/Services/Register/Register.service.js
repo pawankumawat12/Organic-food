@@ -1,16 +1,13 @@
+// RegisterService.js
 import axiosInstance from "../../axiosInstance";
+
 export function RegisterService(userData) {
   const url = "/auth/Signup";
-  const registerResponse = axiosInstance
+  return axiosInstance
     .post(url, userData)
-    .then((response) => {
-      return response.data;
-    })
+    .then((response) => response.data)
     .catch((error) => {
-      console.error("Error during registration:", error);
+      console.error("Error during registration:", error?.response?.data || error.message);
       throw error;
     });
-  return registerResponse;
 }
-
-export default RegisterService;
