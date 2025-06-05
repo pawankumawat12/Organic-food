@@ -46,47 +46,47 @@ function Navbar() {
         </div>
 
         <div className="navbar-center">
-          <a href="#">HOME</a>
+          <a to="#">HOME</a>
           <div className="dropdown">
-            <a href="#">
+            <a to="#">
               PAGES <i className="fas fa-caret-down"></i>
             </a>
             <ul className="dropdown-menu">
               <li>
-                <a href="#">ABOUT US</a>
+                <a to="#">ABOUT US</a>
               </li>
               <li>
-                <a href="#">SHOP</a>
+                <a to="#">SHOP</a>
               </li>
               <li>
-                <a href="#">SINGLE PRODUCT</a>
+                <a to="#">SINGLE PRODUCT</a>
               </li>
               <li>
-                <a href="#">CART</a>
+                <a to="#">CART</a>
               </li>
               <li>
-                <a href="#">CHECKOUT</a>
+                <a to="#">CHECKOUT</a>
               </li>
               <li>
-                <a href="#">BLOG</a>
+                <a to="#">BLOG</a>
               </li>
               <li>
-                <a href="#">SINGLE POST</a>
+                <a to="#">SINGLE POST</a>
               </li>
               <li>
-                <a href="#">STYLES</a>
+                <a to="#">STYLES</a>
               </li>
               <li>
-                <a href="#">CONTACT</a>
+                <a to="#">CONTACT</a>
               </li>
               <li>
-                <a href="#">THANK YOU</a>
+                <a to="#">THANK YOU</a>
               </li>
               <li>
-                <a href="#">MY ACCOUNT</a>
+                <a to="#">MY ACCOUNT</a>
               </li>
               <li>
-                <a href="#">404 ERROR</a>
+                <a to="#">404 ERROR</a>
               </li>
             </ul>
           </div>
@@ -106,35 +106,29 @@ function Navbar() {
             </Link>
             <ul className="dropdown-menu">
               <li>
-                <a href="#" onClick={toggleLogin}>
-                  Login
-                </a>
+                <Link onClick={toggleLogin}>Login</Link>
               </li>
               <li>
-                <a href="#" onClick={toggleRegister}>
-                  Signup
-                </a>
+                <Link onClick={toggleRegister}>Signup</Link>
               </li>
               <li>
-                <a href="#">Logout</a>
+                <Link>Logout</Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
       {showSidebar && <Sidebar closeSidebar={() => setShowSidebar(false)} />}
-      {showLogin && (
-        <Login
-          closeLogin={() => {
-            setShowLogin(false);
-          }}
-        />
-      )}
       {showRegister && (
         <Register
-          closeRegister={() => {
-            setShowRegister(false);
-          }}
+          closeRegister={() => setShowRegister(false)}
+          openLogin={() => setShowLogin(true)}
+        />
+      )}
+      {showLogin && (
+        <Login
+          closeLogin={() => setShowLogin(false)}
+          openRegister={() => setShowRegister(true)}
         />
       )}
     </>
