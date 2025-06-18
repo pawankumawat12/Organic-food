@@ -11,16 +11,17 @@ function AdminSidebar() {
               Dashboard
             </Link>
           </li>
+           <li>
+            <Link className="links active" to="/admin/products">
+              Products
+            </Link>
+          </li>
           <li>
             <Link className="links active" to="#">
               Orders
             </Link>
           </li>
-          <li>
-            <Link className="links active" to="/admin/products">
-              Products
-            </Link>
-          </li>
+         
           <li>
             <Link className="links active" to="#">
               Customers

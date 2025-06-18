@@ -1,55 +1,22 @@
-//
 .admin-dashboard {
   padding: 24px;
   font-family: Arial, sans-serif;
   background: #f7f9fc;
-
-  .summary-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-
-    .card {
-      background: white;
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-
-      .circle {
-        width: 48px;
-        height: 48px;
-        border: 4px solid #2563eb;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 8px;
-        font-size: 18px;
-        color: #2563eb;
-      }
-
-      p {
-        margin: 0;
-        color: #6b7280;
-      }
-
-      h3 {
-        margin: 4px 0 0;
-        font-size: 18px;
-        font-weight: bold;
-      }
-    }
-  }
-
+  height: 84vh;
+  margin: 10px;
+  border-radius: 20px;
+  
   .controls {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 16px;
 
     .left {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
 
@@ -81,6 +48,8 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       width: 240px;
+      flex: 1;
+      min-width: 180px;
     }
   }
 
@@ -88,11 +57,12 @@
     background: white;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    overflow-y: auto;
-    max-height: 400px;
+    overflow-x: auto;
+    max-height: 460px;
 
     table {
       width: 100%;
+      min-width: 800px;
       border-collapse: separate;
       border-spacing: 0 10px;
 
@@ -157,6 +127,8 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
 
     button {
       padding: 6px 12px;
@@ -164,6 +136,37 @@
       border-radius: 6px;
       background: #fff;
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+
+        .btn,
+        .selection-info {
+          width: 100%;
+        }
+      }
+
+      .search-box {
+        width: 100%;
+      }
+    }
+
+    .pagination {
+      flex-direction: column;
+      align-items: flex-start;
+
+      span {
+        font-size: 14px;
+      }
     }
   }
 }

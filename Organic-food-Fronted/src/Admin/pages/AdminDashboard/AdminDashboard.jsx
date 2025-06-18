@@ -1,22 +1,33 @@
-import React from 'react';
-import LiveCallChart from '../charts/LiveCallChart/LiveCallChart';
-import ConversionsChart from '../charts/ConversessionChart/ConversionsChart';
-import StatCard from '../charts/StateChart/StatChart';
+import React from "react";
 
-const AdminDashboard = () => (
-  <div className="p-6 space-y-6 bg-gray-100 min-h-screen">
-    <div className="grid grid-cols-4 gap-4">
-      <StatCard  title="Sale" value="750K" />
-      <StatCard title="Cancels" value="7,500" />
-      <StatCard title="Total Earned" value="7,500" />
-      <StatCard title="Distributions" value="7,500" />
+import "./AdminDashboard.scss";
+import Charts from "../Charts/Charts";
+function AdminDashboard() {
+  return (
+    <div className="admin-dashboard">
+      <div class="summary-cards">
+        <div class="card">
+          <div class="circle">↗</div> <p>Total Sales</p>
+          <h3>$560K</h3>{" "}
+        </div>
+        <div class="card">
+          <div class="circle">↗</div> <p>Total Sales</p>
+          <h3>$560K</h3>{" "}
+        </div>
+        <div class="card">
+          <div class="circle">↗</div> <p>Total Sales</p>
+          <h3>$560K</h3>{" "}
+        </div>
+        <div class="card">
+          <div class="circle">↗</div> <p>Total Sales</p>
+          <h3>$560K</h3>{" "}
+        </div>
+      </div>
+
+      <div class="charts-section">
+        <Charts />
+      </div>
     </div>
-
-    <div className="grid grid-cols-2 gap-4">
-      <ConversionsChart />
-      <LiveCallChart />
-    </div>
-  </div>
-);
-
+  );
+}
 export default AdminDashboard;
