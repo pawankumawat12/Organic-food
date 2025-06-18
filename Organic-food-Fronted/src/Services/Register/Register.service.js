@@ -19,4 +19,4 @@ import axiosInstance from "../../axiosInstance";
   }
 }
 
-export default RegisterService;
+export default registerUserService;
