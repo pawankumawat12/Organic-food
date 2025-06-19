@@ -5,26 +5,26 @@ import Charts from "../Charts/Charts";
 function AdminDashboard() {
   return (
     <div className="admin-dashboard">
-      <div class="summary-cards">
-        <div class="card">
-          <div class="circle">↗</div> <p>Total Sales</p>
+      <div className="summary-cards">
+        <div className="card">
+          <div className="circle">↗</div> <p>Total Sales</p>
           <h3>$560K</h3>{" "}
         </div>
-        <div class="card">
-          <div class="circle">↗</div> <p>Total Sales</p>
+        <div className="card">
+          <div className="circle">↗</div> <p>Total Sales</p>
           <h3>$560K</h3>{" "}
         </div>
-        <div class="card">
-          <div class="circle">↗</div> <p>Total Sales</p>
+        <div className="card">
+          <div className="circle">↗</div> <p>Total Sales</p>
           <h3>$560K</h3>{" "}
         </div>
-        <div class="card">
-          <div class="circle">↗</div> <p>Total Sales</p>
+        <div className="card">
+          <div className="circle">↗</div> <p>Total Sales</p>
           <h3>$560K</h3>{" "}
         </div>
       </div>
 
-      <div class="charts-section">
+      <div className="charts-section">
         <Charts />
       </div>
     </div>

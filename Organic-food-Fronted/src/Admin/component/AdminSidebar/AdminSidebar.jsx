@@ -4,7 +4,7 @@ function AdminSidebar() {
   return (
     <>
       <div className="admin-sidebar">
-        <h2>Organic-users</h2>
+        <p>Organic-users</p>
         <ul>
           <li>
             <Link className="links active" to="/admin/dashboard">

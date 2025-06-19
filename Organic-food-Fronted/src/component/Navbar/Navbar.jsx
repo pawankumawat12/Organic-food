@@ -1,5 +1,5 @@
 import "./Navbar.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
@@ -8,6 +8,13 @@ function Navbar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
   const toggleRegister = () => {
     setShowRegister((prev) => !prev);
   };
@@ -17,6 +24,13 @@ function Navbar() {
   const toggleLogin = () => {
     setShowLogin((prev) => !prev);
   };
+
+  const handleLogout = () =>{
+    localStorage.removeItem("token");
+    alert("Logout Successfully");
+    setIsLoggedIn(false);
+    
+  }
   return (
     <>
       <div className="navbar">
@@ -104,16 +118,23 @@ function Navbar() {
             <Link to="/" className="cart-icon">
               <i className="fas fa-user"></i>
             </Link>
+
             <ul className="dropdown-menu">
-              <li>
-                <Link onClick={toggleLogin}>Login</Link>
-              </li>
-              <li>
-                <Link onClick={toggleRegister}>Signup</Link>
-              </li>
-              <li>
-                <Link>Logout</Link>
-              </li>
+              {!isLoggedIn && (
+                <>
+                  <li>
+                    <Link onClick={toggleLogin}>Login</Link>
+                  </li>
+                  <li>
+                    <Link onClick={toggleRegister}>Signup</Link>
+                  </li>
+                </>
+              )}
+              {isLoggedIn && (
+                <li>
+                  <Link to="/" onClick={handleLogout}>Logout</Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

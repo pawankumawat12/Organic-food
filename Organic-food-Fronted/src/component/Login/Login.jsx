@@ -1,30 +1,24 @@
 import "./Login.scss";
 import loginimg from "../../assets/login.png";
-import useLoginUser from "../../hooks/UserLogin";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import Loginhook from "../../Hooks/Login/Login.hook";
 
 function Login({ closeLogin, openRegister }) {
-  const { formData, handleChange, handleSubmit, loading, error, success } =
-    useLoginUser();
-
-  useEffect(() => {
-    if (success && closeLogin) {
-      closeLogin();
-    }
-  }, [success, closeLogin]);
-
+  const { formData, handleChange, handleSubmit, loading, error } = Loginhook();
 
   const handleSignUpClick = () => {
     if (closeLogin) closeLogin();
     if (openRegister) openRegister();
   };
+
   return (
     <div className="login-popup" onClick={closeLogin}>
       <div className="login-container" onClick={(e) => e.stopPropagation()}>
         <div className="login-form">
           <h1 className="title">Welcome back</h1>
           <p className="subtitle">Please enter your details</p>
+
+          {error && <p className="errors">{error}</p>}
 
           <form onSubmit={handleSubmit}>
             <label>Email address</label>
@@ -55,7 +49,7 @@ function Login({ closeLogin, openRegister }) {
             </div>
 
             <button type="submit" className="sign-in-btn">
-              Sign in
+              {loading ? "Signing in..." : "Sign in"}
             </button>
 
             <button type="button" className="google-btn">
@@ -64,7 +58,7 @@ function Login({ closeLogin, openRegister }) {
           </form>
 
           <p className="signup-text">
-            Don’t have an account?
+            Don’t have an account?{" "}
             <span
               style={{ color: "#007bff", cursor: "pointer" }}
               onClick={handleSignUpClick}
@@ -75,9 +69,11 @@ function Login({ closeLogin, openRegister }) {
         </div>
 
         <div className="login-illustration">
+          <Link to={"/"}>
           <button className="close-btn" onClick={closeLogin}>
             <i className="fas fa-times"></i>
           </button>
+          </Link>
           <img src={loginimg} alt="Login Illustration" />
         </div>
       </div>
