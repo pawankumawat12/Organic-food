@@ -5,7 +5,7 @@
   min-height: 84vh;
   margin: 10px;
   border-radius: 20px;
-
+  
   .controls {
     display: flex;
     flex-wrap: wrap;
@@ -18,14 +18,12 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
 
       .btn {
-        padding: 8px 14px;
+        padding: 8px 12px;
         border-radius: 6px;
         cursor: pointer;
-        font-weight: 500;
-        font-size: 14px;
 
         &.border {
           border: 1px solid #ccc;
@@ -36,10 +34,6 @@
           background: #2563eb;
           color: white;
           border: none;
-
-          &:hover {
-            background: #1d4ed8;
-          }
         }
       }
 
@@ -68,7 +62,7 @@
 
     table {
       width: 100%;
-      min-width: 1000px;
+      min-width: 800px;
       border-collapse: separate;
       border-spacing: 0 10px;
 
@@ -81,50 +75,21 @@
         th {
           text-align: left;
           padding: 12px;
-          font-size: 13px;
+          font-size: 14px;
           color: #6b7280;
-          background: #f1f5f9;
-          flex-wrap: nowrap;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          max-width: 160px;
         }
-
       }
 
       tbody {
         tr {
-          background: #ffffff;
-          flex-wrap: nowrap;
-
-          &:hover {
-            background: #f0f4f8;
-          }
+          background: #f7f9fc;
 
           td {
             padding: 12px;
             vertical-align: middle;
-            font-size: 14px;
-            color: #333;
-            flex-wrap: nowrap;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 160px;
-
-            input[type="checkbox"] {
-              transform: scale(1.1);
-            }
           }
 
-          .product-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
+          
           .user-info {
             display: flex;
             align-items: center;
@@ -138,7 +103,6 @@
 
             .name {
               font-weight: 600;
-              font-size: 14px;
             }
 
             .email {
@@ -153,29 +117,10 @@
             cursor: pointer;
             font-size: 16px;
             margin-right: 4px;
-            color: #555;
-
-            &:hover {
-              color: #dc2626;
-            }
-          }
-          .icon-btn2{
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 4px;
-            color: #555;
-            
-
-            &:hover {
-              color: #1d4ed8;
-            }
           }
         }
-
         tr:nth-child(odd) {
-          background: #f9fafb;
+          background: #e9fced;
         }
       }
     }
@@ -195,23 +140,13 @@
       border-radius: 6px;
       background: #fff;
       cursor: pointer;
-      font-weight: 500;
-
-      &:hover {
-        background: #f1f5f9;
-      }
-    }
-
-    span {
-      font-size: 14px;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     .controls {
       flex-direction: column;
       align-items: flex-start;
-      gap: 10px;
 
       .left {
         flex-direction: column;
@@ -229,24 +164,13 @@
       }
     }
 
-    .table-container {
-      table {
-        min-width: unset;
-        font-size: 13px;
+    .pagination {
+      flex-direction: column;
+      align-items: flex-start;
 
-        thead th,
-        tbody td {
-          padding: 10px;
-          flex-wrap: nowrap;
-        }
-
-        .product-img {
-          width: 40px;
-          height: 40px;
-        }
+      span {
+        font-size: 14px;
       }
     }
-
-   
   }
 }

@@ -1,0 +1,88 @@
+.admin-orders {
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  max-height: 86vh;
+  border-radius: 20px;
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  .table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    max-height: 74vh;
+    .orders-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px;
+
+      thead {
+        background: #f1f5f9;
+
+        th {
+          padding: 12px;
+          font-size: 13px;
+          text-align: left;
+          color: #555;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 160px;
+        }
+      }
+
+      tbody {
+        tr {
+          background: #fff;
+          transition: background 0.3s;
+
+          &:hover {
+            background: #f9fafb;
+          }
+
+          td {
+            padding: 12px;
+            font-size: 14px;
+            color: #333;
+             white-space: nowrap;
+          text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 160px;
+          }
+
+          .status {
+            font-weight: bold;
+            &.pending {
+              color: #f59e0b;
+            }
+            &.delivered {
+              color: green;
+            }
+            &.cancelled {
+              color: #ef4444;
+            }
+          }
+        }
+
+        tr:nth-child(odd) {
+          background: #f9f9f9;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .orders-table {
+      min-width: unset;
+      font-size: 12px;
+
+      thead th,
+      tbody td {
+        padding: 8px;
+      }
+    }
+  }
+}

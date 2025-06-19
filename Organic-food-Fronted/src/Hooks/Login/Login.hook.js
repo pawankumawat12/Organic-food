@@ -55,7 +55,7 @@ function Loginhook() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       alert("Login Successfully");
-      navigate("/"); 
+      
     } catch (err) {
       setError("Login failed. Please try again.");
     } finally {
