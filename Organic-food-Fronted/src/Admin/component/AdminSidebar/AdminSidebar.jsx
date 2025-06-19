@@ -17,13 +17,13 @@ function AdminSidebar() {
             </Link>
           </li>
           <li>
-            <Link className="links active" to="#">
+            <Link className="links active" to="/admin/order">
               Orders
             </Link>
           </li>
          
           <li>
-            <Link className="links active" to="#">
+            <Link className="links active" to="/admin/customers">
               Customers
             </Link>
           </li>
