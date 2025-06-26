@@ -1,5 +1,4 @@
 import React from "react";
-import { Bar, Line } from "react-chartjs-2";
 import './Charts.scss';
 import {
   Chart as ChartJS,
